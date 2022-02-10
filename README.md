@@ -1,2 +1,2 @@
-# New-ID-Recommendation-Algorithm
-Coding Test
+# Algorithm Practice (level 1)
+Python Algorithm Pratice
