@@ -1,7 +1,13 @@
+# 문제 단순화
+# 최고 순위 : 맞춘 개수 + 모르는 개수
+# 최저 순위 : 맞춘 개수
+
 def solution(lottos, win_nums):
-    # lottos : 내가 선택한 로또 번호, win_nums : 당첨번호
-    rank = {0: 6, 1: 6, 2: 5, 3: 4, 4: 3, 5: 2, 6: 1} #Rank함수 이용해 주어진 순위 정보를 기입
-    return [rank[len(set(lottos) & set(win_nums)) + lottos.count(0)], rank[len(set(lottos) & set(win_nums))]]
-    #set=순서X, 중복X인 집합
-    #lotto와 win_nums의 번호를 대조해 맞는 번호만 활용해 rank 계산
-    #conut함수와 0의 정의를 활용해 최저 등수 계산 (0의 정의 : 알아볼 수 없는 번호)
+    rank = [6, 6, 5, 4, 3, 2, 1]  # 순위를 지정해야 하므로 rank(등수)를 list로 선언
+    unknown = lottos.count(0)  # 알아볼 수 없는 수 0의 개수를
+    ans = 0  # 맞춘 개수 초기화
+
+    for x in win_nums:  # win_nums와 lottos를 대조
+        if x in lottos:  # lottos 안에 x 가 있는지 조회
+            ans += 1
+    return rank[ans + unknown], rank[ans]
